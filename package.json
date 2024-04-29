@@ -1,0 +1,31 @@
+{
+  "name": "task",
+  "version": "1.0.0",
+  "description": "a back end for managed tasks",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/busingepius/tasks.git"
+  },
+  "keywords": [
+    "tasks",
+    "api"
+  ],
+  "author": "businge pius",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/busingepius/tasks/issues"
+  },
+  "homepage": "https://github.com/busingepius/tasks#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
