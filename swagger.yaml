@@ -1,0 +1,136 @@
+openapi: 3.0.0
+info:
+  title: Tasks API
+  description: "## \U0001F44B Introduction\n\nWelcome to the API development workspace. This workspace serves as a single source of truth fcdor vff APIs we build and helps new engineers get onboarded to our team's API landscape faster.\n\n## \U0001F680 Getting started with this workspace\n\n##### **Reference collections**\n\nThese collections contain thorough documentation of our team's APIs. They will help you understand the capabilities of the services we own and how to use them effectively.\n\nAs an example, we've added the **API Documentation** collection. It contains requests and examples to create, read, update and delete collections via an API.\n\nSimilarly, we recommend adding **#reference collections** for your services to this workspace.\n\n##### **Blueprint collections**\n\nThese self-service collections curated by our team will help you observe workflows supported by the services we own. You can directly send requests using these endpoints.\n\nAs an example, we've added the **RESTful API Basics** collection that uses fake-store API to create, read, update and delete products.\n\nSimilarly, we recommend adding **#blueprint collections** for important workflows managed by your team.\n\n##### **Environments**\n\nEnvironments are set up to manage variables like base URLs, API keys, and tokens whose values you can change depending on the context of your work (e.g., development, staging, production).\n\n## \U0001F6DF Help and support\n\nIf you have any questions or suggestions, please don't hesitate to reach out to your manager or any member of the Engineering team."
+  contact: {}
+  version: '1.0'
+servers:
+  - url: http://localhost:3000/api/v1
+    variables: {}
+paths:
+  /tasks:
+    get:
+      tags:
+        - Tasks
+      summary: Get All Tasks
+      description: Get all tasks available on the database
+      operationId: GetAllTasks
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    post:
+      tags:
+        - Tasks
+      summary: Create task
+      description: Create a task through passing in the data in the request body
+      operationId: Createtask
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CreatetaskRequest'
+                - example:
+                    name: shake and bb
+                    completed: true
+            example:
+              name: shake and bb
+              completed: true
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /tasks/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The user ID
+    get:
+      tags:
+        - Tasks
+      summary: Get single task
+      description: Get a task from a collection of tasks using the id parameter
+      operationId: Getsingletask
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    patch:
+      tags:
+        - Tasks
+      summary: Update tasks
+      description: Update any required details of a task provided you have its id parameter
+      operationId: Updatetasks
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/UpdatetasksRequest'
+                - example:
+                    name: Shake and Cook
+            example:
+              name: Shake and Cook
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+        - Tasks
+      summary: Delete task
+      description: Delete the task to which the particular id parameter belongs
+      operationId: Deletetask
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    CreatetaskRequest:
+      title: CreatetaskRequest
+      required:
+        - name
+        - completed
+      type: object
+      properties:
+        name:
+          type: string
+        completed:
+          type: boolean
+      example:
+        name: shake and bb
+        completed: true
+    UpdatetasksRequest:
+      title: UpdatetasksRequest
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+      example:
+        name: Shake and Cook
+tags:
+  - name: Misc
+    description: ''
+  - name: Tasks
+    description: ''
